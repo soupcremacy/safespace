@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+/* font */
+
+@keyframes circleanim {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(6);
+    }
+}
+
+@keyframes circleanim2 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+:root {
+    --screenWidth: 0px;
+    --screenHeight: 0px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* prevent scrolling during animation */
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a#button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: black;
+    background-color: white;
+}
+
+body * {
+    font-family: 'Inter', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: bold;
+}
+
+#circle {
+    /* animation stuff */
+    animation-name: circleanim;
+    animation-duration: 5s;
+    animation-timing-function: cubic-bezier(0.5, 0.2, 0.2, 0.5); /* fast start, slow end */
+    /* actual styling */
+    background-color: black;
+    min-width: calc(var(--screenHeight));
+    min-height: calc(var(--screenHeight));
+    border-radius: 15152502px;
+    mask-image: radial(to bottom, black, transparent); /* Standard property */
+}
+
+/* This is the masking layer */
+#maskContainer {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+    pointer-events: none;
+
+    /* Create transparent background with a black circle mask */
+    background: radial-gradient(circle, black 30%, transparent 31%);
+    mask-image: radial-gradient(circle, black 30%, transparent 31%);
+    -webkit-mask-image: radial-gradient(circle, black 30%, transparent 31%);
+    mask-mode: alpha;
+
+    animation: circleanim 5s cubic-bezier(0.5, 0.2, 0.2, 0.5) forwards;
+}
+
+#content {
+    color: white;
+    position: relative;
+    z-index: 1;
+    animation: circleanim2 5s cubic-bezier(0.5, 0.2, 0.2, 0.5) forwards;
+}
+
+body {
+    padding: 0; /* set padding to 0 */
+    margin: 0; /* set margin to 0*/
+    min-height: 100vh; /* make body take the full viewport space */
+    background-color: white; /* the dark mode users need to thank me for this one right here*/
+}
