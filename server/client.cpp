@@ -52,7 +52,7 @@ int main() {
                     std::cout << "  Characteristic: " << characteristic.uuid() << std::endl;
                     if (characteristic.can_write_request())
                     {
-                        std::string message = "Hello from client!";
+                        std::string message = "WELCOME";
                         SimpleBLE::ByteArray data(message.begin(), message.end());
                         // use write_value instead of write_request (write_request does not exist on this build)
                         peripheral.write_request(service.uuid(), characteristic.uuid(), data);
